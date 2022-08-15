@@ -4,31 +4,34 @@ using UnityEngine;
 
 public class SwipedOverNode : MonoBehaviour
 {
-
-    private Vector2 myPosition;
+    public List<GameObject> bases;
     // Start is called before the first frame update
     void Start()
     {
-        myPosition = transform.position;
         SwipeDetector.instance.swipe.AddListener(CheckSwipePlace);
     }
-
-    public float distance = 0.0f;
 
     // Update is called once per frame
     private void CheckSwipePlace()
     {
-        if (Vector2.Distance(myPosition, SwipeDetector.instance.startingPosition) < 1)
+        GameObject startingGO = null;
+        GameObject endingGO = null;
+        foreach (GameObject go in bases)
         {
-            Debug.Log("Im starting here: "  + gameObject.name);
-            //distance = Vector2.Distance(myPosition, SwipeDetector.instance.startingPosition);
+            if (Vector2.Distance(go.transform.position, SwipeDetector.instance.startingPosition) < 1)
+            {
+                //Debug.Log("DUPA");
+                startingGO = go;
+            }
+            if (Vector2.Distance(go.transform.position, SwipeDetector.instance.endingPosition) < 1)
+            {
+                //Debug.Log("DUPA 2");
+                endingGO = go;
+            }
         }
-        
-        
-        if (Vector2.Distance(myPosition, SwipeDetector.instance.endingPosition) < 1)
+        if (startingGO != null && endingGO != null)
         {
-            Debug.Log("Im ending here: "  + gameObject.name);
-            //distance = Vector2.Distance(myPosition, SwipeDetector.instance.endingPosition);
+            startingGO.GetComponent<Base>().SendParticles(endingGO.transform.position);
         }
     }
 }

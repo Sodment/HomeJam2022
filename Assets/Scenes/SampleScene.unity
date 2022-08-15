@@ -530,8 +530,6 @@ GameObject:
   - component: {fileID: 671735195}
   - component: {fileID: 671735198}
   - component: {fileID: 671735197}
-  - component: {fileID: 671735196}
-  - component: {fileID: 671735199}
   m_Layer: 0
   m_Name: EnemyBase
   m_TagString: Untagged
@@ -555,19 +553,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &671735196
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 671735194}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba50873dc922ea048a046ecc877ccbd0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseType: 1
 --- !u!114 &671735197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -597,19 +582,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseType: 1
---- !u!114 &671735199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 671735194}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0407ed471c753d4ab5efbe0a2ce1341, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distance: 1
 --- !u!1 &745253232
 GameObject:
   m_ObjectHideFlags: 0
@@ -619,7 +591,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 745253234}
-  - component: {fileID: 745253235}
+  - component: {fileID: 745253237}
+  - component: {fileID: 745253236}
   m_Layer: 0
   m_Name: EnemyBase (1)
   m_TagString: Untagged
@@ -643,7 +616,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &745253235
+--- !u!114 &745253236
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -652,10 +625,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 745253232}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0407ed471c753d4ab5efbe0a2ce1341, type: 3}
+  m_Script: {fileID: 11500000, guid: ba50873dc922ea048a046ecc877ccbd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 1
+  baseType: 1
+--- !u!114 &745253237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 745253232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c7833e4628d64e4dacaa4ff26231d06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnTimer: 1
+  radius: 1
+  particlePrefab: {fileID: 1675604429411735238, guid: 0f1968598c40c054bb277c8ed9d60dfa, type: 3}
+  particleLimit: 40
 --- !u!1 &951237231
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,6 +655,7 @@ GameObject:
   m_Component:
   - component: {fileID: 951237233}
   - component: {fileID: 951237232}
+  - component: {fileID: 951237234}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -705,6 +695,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &951237234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951237231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0407ed471c753d4ab5efbe0a2ce1341, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bases:
+  - {fileID: 745253232}
+  - {fileID: 671735194}
+  - {fileID: 1153333171}
 --- !u!1 &1153333171
 GameObject:
   m_ObjectHideFlags: 0
@@ -716,7 +722,6 @@ GameObject:
   - component: {fileID: 1153333172}
   - component: {fileID: 1153333173}
   - component: {fileID: 1153333174}
-  - component: {fileID: 1153333175}
   m_Layer: 0
   m_Name: AllyBase
   m_TagString: Untagged
@@ -769,19 +774,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseType: 0
---- !u!114 &1153333175
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1153333171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0407ed471c753d4ab5efbe0a2ce1341, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distance: 1
 --- !u!1 &1234828946
 GameObject:
   m_ObjectHideFlags: 0

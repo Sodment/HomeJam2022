@@ -32,11 +32,13 @@ public class OnParticleSpawn : MonoBehaviour
             case BaseType.allyBase:
                 {
                     gameObject.GetComponent<SpriteRenderer>().sprite = partcileSprites["allyParticle"];
+                    gameObject.GetComponent<Particle>().particleType = ParticleType.allyParticle;
                     break;
                 }
             case BaseType.enemyBase:
                 {
                     gameObject.GetComponent<SpriteRenderer>().sprite = partcileSprites["enemyParticle"];
+                    gameObject.GetComponent<Particle>().particleType = ParticleType.enemyParticle;
                     break;
                 }
         }

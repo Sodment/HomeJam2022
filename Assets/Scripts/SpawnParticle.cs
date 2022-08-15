@@ -14,7 +14,6 @@ public class SpawnParticle : MonoBehaviour
     {
         if (timer >= spawnTimer && aliveParticles < particleLimit)
         {
-            Debug.Log("Dupa");
             Instantiate(particlePrefab, RandomPointOnCircle(), Quaternion.identity, gameObject.transform);
             timer = 0.0f;
             aliveParticles += 1;
