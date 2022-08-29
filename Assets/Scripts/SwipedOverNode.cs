@@ -29,7 +29,7 @@ public class SwipedOverNode : MonoBehaviour
                 endingGO = go;
             }
         }
-        if (startingGO != null && endingGO != null)
+        if (startingGO != null && endingGO != null && startingGO != endingGO)
         {
             startingGO.GetComponent<Base>().SendParticles(endingGO.transform.position);
         }

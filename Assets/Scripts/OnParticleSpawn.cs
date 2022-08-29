@@ -13,6 +13,8 @@ public struct NamedImage
 public class OnParticleSpawn : MonoBehaviour
 {
     public Base parent;
+    public float outerRadius;
+    public float innerRadius;
     public Dictionary<string, Sprite> partcileSprites = new Dictionary<string, Sprite>();
     public List<NamedImage> particlesSprites = new List<NamedImage>();
 
@@ -42,5 +44,19 @@ public class OnParticleSpawn : MonoBehaviour
                     break;
                 }
         }
+        LeanTween.move(gameObject, RandomPointInAnnulus(innerRadius, outerRadius), 2.0f).setEaseOutElastic();
     }
+
+    public Vector3 RandomPointInAnnulus(float minRadius, float maxRadius)
+    {
+
+        var randomDirection = (UnityEngine.Random.insideUnitCircle * transform.position).normalized;
+
+        var randomDistance = UnityEngine.Random.Range(minRadius, maxRadius);
+
+        var point = transform.position + new Vector3(randomDirection.x, randomDirection.y, 0.0f) * randomDistance;
+
+        return point;
+    }
+
 }

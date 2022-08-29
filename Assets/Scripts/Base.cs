@@ -14,7 +14,17 @@ public class Base : MonoBehaviour
         foreach (Component p in particles)
         {
             Debug.Log(p.gameObject.name);
-            LeanTween.move(p.gameObject, target, 3.0f).setOnComplete(() => Destroy(p.gameObject));
+
+            LeanTween.move(p.gameObject, RandomPointInCircle(target), 3.0f).setOnComplete(() => Destroy(p.gameObject));
         }
     }
+
+    public Vector3 RandomPointInCircle(Vector3 target)
+    {
+        Vector2 randomPoint = Random.insideUnitCircle;
+        Vector3 rp = new Vector3(randomPoint.x, randomPoint.y, 0.0f) * 0.25f;
+        return (target + rp);
+    }
 }
+
+
